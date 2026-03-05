@@ -3,11 +3,7 @@ import { useState } from 'react'
 
 function ToDoApp() {
 
-  const [tasks, setTasks] = useState([{
-    id: '',
-    title: '',
-    description: ''
-  }])
+  const [tasks, setTasks] = useState([])
   const [form,setForm] = useState({
     id: '',
     title: '',
