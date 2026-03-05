@@ -1,19 +1,31 @@
 import './style.css'
 import { useState } from 'react'
 
+type Task = {
+  id: string
+  title: string
+  description: string
+}
+
 function ToDoApp() {
 
-  const [tasks, setTasks] = useState([])
-  const [form,setForm] = useState({
+  const [tasks, setTasks] = useState<Task[]>([])
+  const [form, setForm] = useState<Task>({
     id: '',
     title: '',
     description: ''
   })
 
-  const handleForm = (e:React.FormEvent<HTMLFormElement>) => {
+  const handleForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    form.id = crypto.randomUUID();
-    setTasks((prevTasks) => [...prevTasks,form])
+
+    const newTask: Task = {
+      ...form,
+      id: crypto.randomUUID()
+    }
+
+    setTasks((prevTasks) => [...prevTasks, newTask])
+
     setForm({
       id: '',
       title: '',
@@ -26,32 +38,38 @@ function ToDoApp() {
       <div className="formContainer">
         <form onSubmit={handleForm}>
           <h1>Cadastrar Tarefas</h1>
-          <input 
+
+          <input
             type="text"
-            value={form.title} 
+            value={form.title}
             onChange={(e) => {
               setForm((prevForm) => ({
                 ...prevForm,
-                title:e.target.value
+                title: e.target.value
               }))
             }}
-            placeholder='Título' />
-          <input 
-            type="text" 
+            placeholder="Título"
+          />
+
+          <input
+            type="text"
             value={form.description}
             onChange={(e) => {
               setForm((prevForm) => ({
-                ...prevForm, 
-                description:e.target.value
+                ...prevForm,
+                description: e.target.value
               }))
             }}
-            placeholder='Descrição' />
-          <button type='submit'>Cadastrar Tarefa</button>
+            placeholder="Descrição"
+          />
+
+          <button type="submit">Cadastrar Tarefa</button>
         </form>
       </div>
+
       <div className="tasksContainer">
         {tasks.map((task) => (
-          <div key={task.id} className='taskCard'>
+          <div key={task.id} className="taskCard">
             <h4>{task.title}</h4>
             <p>{task.description}</p>
           </div>
