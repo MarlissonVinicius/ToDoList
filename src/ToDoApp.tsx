@@ -1,5 +1,5 @@
 import './style.css'
-import { use, useState } from 'react'
+import { useState } from 'react'
 
 function ToDoApp() {
 
@@ -14,7 +14,7 @@ function ToDoApp() {
     description: ''
   })
 
-  const handleForm = (e) => {
+  const handleForm = (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     form.id = crypto.randomUUID();
     setTasks((prevTasks) => [...prevTasks,form])
