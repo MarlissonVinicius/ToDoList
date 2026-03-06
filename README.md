@@ -2,7 +2,7 @@
 
 Uma aplicação de gerenciamento de tarefas desenvolvida para consolidar conceitos fundamentais de **React.js** e **TypeScript**, focada em manipulação de estados complexos e design responsivo.
 
-[Clique aqui para visitar a página](https://to-do-list-pdgxwy95g-marlissonvinicius-projects.vercel.app/)
+[Clique aqui para visitar a página](https://to-do-list-rho-gold-96.vercel.app/)
 ---
 
 ## 🧠 Conhecimentos Aplicados
