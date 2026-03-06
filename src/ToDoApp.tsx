@@ -18,19 +18,27 @@ function ToDoApp() {
 
   const handleForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    if(form.title != ''){
+      if(form.description != ''){
+        const newTask: Task = {
+        ...form,
+        id: crypto.randomUUID()
+        }
 
-    const newTask: Task = {
-      ...form,
-      id: crypto.randomUUID()
+        setTasks((prevTasks) => [...prevTasks, newTask])
+
+        setForm({
+          id: '',
+          title: '',
+          description: ''
+        })
+      }else{
+      alert('Erro! \nCampo descrição está vazio')
+      }
+    }else{
+      alert('Erro! \nCampo título está vazio')
     }
-
-    setTasks((prevTasks) => [...prevTasks, newTask])
-
-    setForm({
-      id: '',
-      title: '',
-      description: ''
-    })
+    
   }
 
   return (
